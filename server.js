@@ -3,6 +3,7 @@ const app = express();
 
 const html = require('./routes/html');
 const api = require('./routes/api');
+const notes = require('./routes/notes');
 
 const PORT = process.env.PORT || 3000;
 //set uses for using express withen the app
