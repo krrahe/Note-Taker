@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
 const path = require('path');
+const notes = require('/db/notes.json').notes;
 
 async function createNewNote (body, notes) {
   const note = body;

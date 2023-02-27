@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { createNewNote, deleteNote } = require("../../lib/notes");
-const { notes } = require("../../db/notes.json");
+const { createNewNote, deleteNote } = require("../../notes");
+
+let {notes} = require("../../db");
+
+
 
 router.get("/notes", (req, res) => {
   // Create a copy of notes to avoid modifying the original

@@ -20,4 +20,4 @@ router.get('*', (req, res) => {
   res.sendFile(path.join(staticPath + 'index.html'));
 });
 
-module.exports = router;
+module.exports = html;

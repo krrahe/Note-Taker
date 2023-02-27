@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const saved = require('../database/save');
+const saved = require('../db/save.js');
 
 router.get('/notes', (req, res) => {
     saved.readFile().then((notes) => res.json(JSON.parse(notes)));
