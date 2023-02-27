@@ -1,16 +1,23 @@
-const router = require('express').Router();
-const saved = require('../database/save');
+const express = require('express');
+const path = require('path');
+const router = express.Router();
 
+// Define the root path for serving static files
+const staticPath = path.join(__dirname, '../../public');
+
+// Serve the index.html file at the root path
+router.get('/', (req, res) => {
+  res.sendFile(path.join(staticPath, 'index.html'));
+});
+
+// Serve the notes.html file at the /notes path
 router.get('/notes', (req, res) => {
-    saved.readFile().then((notes) => res.json(JSON.parse(notes)));
+  res.sendFile(path.join(staticPath, 'notes.html'));
 });
 
-router.post('/notes', (req, res) => {
-    saved.writeFile(req.body).then(() => res.json({ ok: true }));
-});
-
-router.delete('/notes/:id', (req, res) => {
-    saved.deleteFile(req.params.id).then(() => res.json({ ok: true }));
+// Serve the index.html file for all other paths
+router.get('*', (req, res) => {
+  res.sendFile(path.join(staticPath, 'index.html'));
 });
 
 module.exports = router;
